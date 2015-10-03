@@ -1,0 +1,22 @@
+{
+  "name": "OpsbearsApp",
+  "version": "1.0.0",
+  "authors": [
+    "Janos Pasztor <janos@pasztor.at>"
+  ],
+  "license": "MIT",
+  "homepage": "https://www.opsbearsapp.com",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "src/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass": "3.*",
+    "font-awesome": "4.*",
+    "jquery": "2.*",
+    "open-sans-fontface": "~1.4.2"
+  }
+}

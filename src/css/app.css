@@ -1,0 +1,55 @@
+/*
+Error: File to import not found or unreadable: ../components/bootstrap-sass/assets/stylesheets/bootstrap.
+       Load path: Sass::CssImporter::Importer(/Users/janoszen/Documents/Opsbears/git/errorpages/src/sass)
+        on line 2 of src/sass/app.scss
+
+1: @import "variables";
+2: @import "../components/bootstrap-sass/assets/stylesheets/bootstrap";
+3: @import "../components/font-awesome/scss/font-awesome";
+4: @import "../components/open-sans-fontface/sass/open-sans";
+
+Backtrace:
+src/sass/app.scss:2
+/Users/janoszen/Documents/Opsbears/git/errorpages/.build/bundle/ruby/2.2.0/gems/sass-3.4.18/lib/sass/tree/import_node.rb:67:in `rescue in import'
+/Users/janoszen/Documents/Opsbears/git/errorpages/.build/bundle/ruby/2.2.0/gems/sass-3.4.18/lib/sass/tree/import_node.rb:45:in `import'
+/Users/janoszen/Documents/Opsbears/git/errorpages/.build/bundle/ruby/2.2.0/gems/sass-3.4.18/lib/sass/tree/import_node.rb:28:in `imported_file'
+/Users/janoszen/Documents/Opsbears/git/errorpages/.build/bundle/ruby/2.2.0/gems/sass-3.4.18/lib/sass/tree/import_node.rb:37:in `css_import?'
+/Users/janoszen/Documents/Opsbears/git/errorpages/.build/bundle/ruby/2.2.0/gems/sass-3.4.18/lib/sass/tree/visitors/perform.rb:311:in `visit_import'
+/Users/janoszen/Documents/Opsbears/git/errorpages/.build/bundle/ruby/2.2.0/gems/sass-3.4.18/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/janoszen/Documents/Opsbears/git/errorpages/.build/bundle/ruby/2.2.0/gems/sass-3.4.18/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/Users/janoszen/Documents/Opsbears/git/errorpages/.build/bundle/ruby/2.2.0/gems/sass-3.4.18/lib/sass/stack.rb:79:in `block in with_base'
+/Users/janoszen/Documents/Opsbears/git/errorpages/.build/bundle/ruby/2.2.0/gems/sass-3.4.18/lib/sass/stack.rb:115:in `with_frame'
+/Users/janoszen/Documents/Opsbears/git/errorpages/.build/bundle/ruby/2.2.0/gems/sass-3.4.18/lib/sass/stack.rb:79:in `with_base'
+/Users/janoszen/Documents/Opsbears/git/errorpages/.build/bundle/ruby/2.2.0/gems/sass-3.4.18/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/Users/janoszen/Documents/Opsbears/git/errorpages/.build/bundle/ruby/2.2.0/gems/sass-3.4.18/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+/Users/janoszen/Documents/Opsbears/git/errorpages/.build/bundle/ruby/2.2.0/gems/sass-3.4.18/lib/sass/tree/visitors/base.rb:52:in `map'
+/Users/janoszen/Documents/Opsbears/git/errorpages/.build/bundle/ruby/2.2.0/gems/sass-3.4.18/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+/Users/janoszen/Documents/Opsbears/git/errorpages/.build/bundle/ruby/2.2.0/gems/sass-3.4.18/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
+/Users/janoszen/Documents/Opsbears/git/errorpages/.build/bundle/ruby/2.2.0/gems/sass-3.4.18/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+/Users/janoszen/Documents/Opsbears/git/errorpages/.build/bundle/ruby/2.2.0/gems/sass-3.4.18/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
+/Users/janoszen/Documents/Opsbears/git/errorpages/.build/bundle/ruby/2.2.0/gems/sass-3.4.18/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+/Users/janoszen/Documents/Opsbears/git/errorpages/.build/bundle/ruby/2.2.0/gems/sass-3.4.18/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
+/Users/janoszen/Documents/Opsbears/git/errorpages/.build/bundle/ruby/2.2.0/gems/sass-3.4.18/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/janoszen/Documents/Opsbears/git/errorpages/.build/bundle/ruby/2.2.0/gems/sass-3.4.18/lib/sass/tree/visitors/perform.rb:157:in `visit'
+/Users/janoszen/Documents/Opsbears/git/errorpages/.build/bundle/ruby/2.2.0/gems/sass-3.4.18/lib/sass/tree/visitors/perform.rb:8:in `visit'
+/Users/janoszen/Documents/Opsbears/git/errorpages/.build/bundle/ruby/2.2.0/gems/sass-3.4.18/lib/sass/tree/root_node.rb:36:in `css_tree'
+/Users/janoszen/Documents/Opsbears/git/errorpages/.build/bundle/ruby/2.2.0/gems/sass-3.4.18/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
+/Users/janoszen/Documents/Opsbears/git/errorpages/.build/bundle/ruby/2.2.0/gems/sass-3.4.18/lib/sass/engine.rb:378:in `_render_with_sourcemap'
+/Users/janoszen/Documents/Opsbears/git/errorpages/.build/bundle/ruby/2.2.0/gems/sass-3.4.18/lib/sass/engine.rb:295:in `render_with_sourcemap'
+/Users/janoszen/Documents/Opsbears/git/errorpages/.build/bundle/ruby/2.2.0/gems/sass-3.4.18/lib/sass/plugin/compiler.rb:490:in `update_stylesheet'
+/Users/janoszen/Documents/Opsbears/git/errorpages/.build/bundle/ruby/2.2.0/gems/sass-3.4.18/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+/Users/janoszen/Documents/Opsbears/git/errorpages/.build/bundle/ruby/2.2.0/gems/sass-3.4.18/lib/sass/plugin/compiler.rb:209:in `each'
+/Users/janoszen/Documents/Opsbears/git/errorpages/.build/bundle/ruby/2.2.0/gems/sass-3.4.18/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+/Users/janoszen/Documents/Opsbears/git/errorpages/.build/bundle/ruby/2.2.0/gems/sass-3.4.18/lib/sass/plugin.rb:82:in `update_stylesheets'
+/Users/janoszen/Documents/Opsbears/git/errorpages/.build/bundle/ruby/2.2.0/gems/sass-3.4.18/lib/sass/exec/sass_scss.rb:364:in `watch_or_update'
+/Users/janoszen/Documents/Opsbears/git/errorpages/.build/bundle/ruby/2.2.0/gems/sass-3.4.18/lib/sass/exec/sass_scss.rb:51:in `process_result'
+/Users/janoszen/Documents/Opsbears/git/errorpages/.build/bundle/ruby/2.2.0/gems/sass-3.4.18/lib/sass/exec/base.rb:52:in `parse'
+/Users/janoszen/Documents/Opsbears/git/errorpages/.build/bundle/ruby/2.2.0/gems/sass-3.4.18/lib/sass/exec/base.rb:19:in `parse!'
+/Users/janoszen/Documents/Opsbears/git/errorpages/.build/bundle/ruby/2.2.0/gems/sass-3.4.18/bin/sass:13:in `<top (required)>'
+./.build/bin/sass:23:in `load'
+./.build/bin/sass:23:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: File to import not found or unreadable: ../components/bootstrap-sass/assets/stylesheets/bootstrap.\A        Load path: Sass::CssImporter::Importer(/Users/janoszen/Documents/Opsbears/git/errorpages/src/sass)\A         on line 2 of src/sass/app.scss\A \A 1: @import \"variables\";\A 2: @import \"../components/bootstrap-sass/assets/stylesheets/bootstrap\";\A 3: @import \"../components/font-awesome/scss/font-awesome\";\A 4: @import \"../components/open-sans-fontface/sass/open-sans\";"; }

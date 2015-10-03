@@ -1,0 +1,17 @@
+{
+	"name": "opsbears/errorpages",
+	"license": "MIT",
+	"type": "project",
+	"description": "Nice error pages for yout webserver",
+	"autoload": {
+		"psr-4": {
+			"": "src/"
+		}
+	},
+	"require-dev": {
+		"php": ">=5.3.3",
+		"mouf/nodejs-installer": "~1.0",
+		"phing/phing": "^2.12",
+		"twig/twig": "~1.0"
+	}
+}

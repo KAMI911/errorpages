@@ -1,0 +1,57 @@
+#!/bin/bash
+
+echo "Installing bundler..."
+if [ -z "$(which gem)" ]; then
+	echo "You must install rubygems!" >&2
+	exit 1
+else
+	if [ -z "$(which bundler)" ]; then
+		echo "Bundler not found, attempting to install, running 'gem install bundler'"
+		gem install bundler
+		if [ $? -ne 0 ]; then
+			echo "Installing bundler failed!" >&2
+			echo "Please run it yourself:" >&2
+			echo "  gem install bundler" >&2
+			exit 1
+		fi
+	fi
+fi
+
+mkdir -p .build
+mkdir -p .build/bin
+
+echo "Installing composer..."
+if [ ! -f .build/bin/composer.phar ]; then
+	if [ -n "$(which curl)" ]; then
+		curl -o .build/bin/composer.phar https://getcomposer.org/composer.phar
+		if [ $? -ne 0 ]; then
+			echo "Failed to download composer!" >&2
+			exit 1
+		fi
+	elif [ -n "$(which wget)" ]; then
+		wget -O .build/bin/composer.phar https://getcomposer.org/composer.phar
+			echo "Failed to download composer!" >&2
+			exit 1
+	else
+		echo "You need to install either curl or wget!" >&2
+		exit 1
+	fi
+fi
+
+chmod +x .build/bin/composer.phar
+ln -sfF composer.phar .build/bin/composer
+ln -sfF ../composer.json .build/composer.json
+
+echo "Running composer install..."
+.build/bin/composer install
+
+
+echo "Linking composer binaries..."
+for binary in $(ls ./vendor/bin); do
+	echo " - $binary"
+	ln -sfF ../../vendor/bin/$binary .build/bin/$binary
+done
+
+echo "Running phing install..."
+./phing install
+exit $?

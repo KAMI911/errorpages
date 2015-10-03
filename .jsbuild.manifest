@@ -1,0 +1,5 @@
+src/components/jquery/dist/jquery.js
+src/components/bootstrap-sass/assets/javascripts/bootstrap.js
+src/js/src/tooltip-integration.js
+src/js/src/datahref.js
+src/js/src/main.js
