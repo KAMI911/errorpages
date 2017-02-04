@@ -1,0 +1,14 @@
+{
+    "name": "opsbears/errorpages",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Janos Pasztor",
+            "email": "janos@pasztor.at"
+        }
+    ],
+    "require": {
+        "twig/twig": "^2.1"
+    }
+}

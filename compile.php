@@ -1,48 +1,66 @@
 <?php
 
-$css = array(
-	'style.css' => '',
-);
-$scripts = array(
-	'script.js' => '',
-);
-$images = array(
+require_once(__DIR__ . '/vendor/autoload.php');
+$translations = require_once(__DIR__ . '/translations.php');
 
-);
-
-foreach ($images as $filename => $content) {
-	$images[$filename] = 'data: ' . mime_content_type(__DIR__ . '/src/' . $filename).';base64,'. base64_encode(file_get_contents(__DIR__ . '/http-errors-uncompiled/' . $filename));
-}
-foreach ($css as $filename => $content) {
-	$css[$filename] = file_get_contents(__DIR__ . '/http-errors-uncompiled/' . $filename);
+$themes = [];
+$themeIterator = new DirectoryIterator(__DIR__ . '/themes');
+foreach ($themeIterator as $theme) {
+	if ($theme->isDir() && !$theme->isDot()) {
+		$themes[] = $theme->getFilename();
+	}
 }
 
-foreach ($scripts as $filename => $content) {
-	$scripts[$filename] = file_get_contents(__DIR__ . '/http-errors-uncompiled/' . $filename);
-}
+$statusCodes = [
+	400,
+	401,
+	403,
+	404,
+	405,
+	406,
+	408,
+	413,
+	414,
+	417,
+	500,
+	502,
+	503,
+	504,
+];
 
-if ($handle = opendir(__DIR__ . '/http-errors-uncompiled')) {
-	/* This is the correct way to loop over the directory. */
-	while (false !== ($entry = readdir($handle))) {
+foreach ($themes as $theme) {
+	$loader = new Twig_Loader_Filesystem([__DIR__ . '/themes/' . $theme], __DIR__ . '/themes/' . $theme);
+	$twig = new Twig_Environment($loader, ['debug' => true]);
+	$twig->addExtension(new Twig_Extension_Debug());
+	foreach ($statusCodes as $statusCode) {
+		if (
+			file_exists(__DIR__ . '/themes/' . $theme . '/' . $statusCode . '.html.twig') &&
+			array_key_exists($statusCode, $translations['errorPages'])
+		) {
+			$data = $translations['errorPages'][$statusCode];
+			$data['languageCodes'] = array_keys($translations['languages']);
+			$data['languages'] = $translations['languages'];
+			$data['defaultLanguageCode'] = 'en';
+			$data['statusCode'] = $statusCode;
+			if (!file_exists(__DIR__ . '/compiled/' . $theme)) {
+				mkdir(__DIR__ . '/compiled/' . $theme);
+			}
+			file_put_contents(
+				__DIR__ . '/compiled/' . $theme . '/' . $statusCode . '.html',
+				$twig->render($statusCode . '.html.twig', $data)
+			);
 
-		if (is_file(__DIR__ . '/http-errors-uncompiled/' . $entry) && preg_match('/\.html$/', $entry)) {
-			$html = file_get_contents(__DIR__ . '/http-errors-uncompiled/' . $entry);
-
-			foreach ($css as $filename => $content) {
-				$html = str_replace('<link rel="stylesheet" href="' . $filename . '" type="text/css" />', '<style type="text/css">' . $content . '</style>', $html);
+			foreach ($translations['languages'] as $languageCode => $languageName) {
+				$data = $translations['errorPages'][$statusCode];
+				$data['languageCodes'] = [$languageCode];
+				$data['languages'] = [$languageCode => $languageName];
+				$data['defaultLanguageCode'] = $languageCode;
+				$data['statusCode'] = $statusCode;
+				file_put_contents(
+					__DIR__ . '/compiled/' . $theme . '/' . $statusCode . '.' . $languageCode . '.html',
+					$twig->render($statusCode . '.html.twig', $data)
+				);
 			}
-			foreach ($scripts as $script => $content) {
-				$html = str_replace('<script type="text/javascript" src="' . $script . '"></script>', '<script type="text/javascript">' . $content . '</script>', $html);
-			}
-			/**
-			 * Images come last so the filenames get replaced for data URI's in the CSS too.
-			 */
-			foreach ($images as $filename => $content) {
-				$html = str_replace($filename, $content, $html);
-			}
-			file_put_contents(__DIR__ . '/http-errors/' . $entry, $html);
 		}
 	}
-
-	closedir($handle);
 }
